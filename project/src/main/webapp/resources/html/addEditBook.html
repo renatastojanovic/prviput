@@ -1,0 +1,81 @@
+ <div class="jumbotron">
+        <div class="container text-center">
+               <div class="navbar-header navbar-left" >
+                    <a class="navbar-brand" ng-click="changeLang('en')" >EN</a>
+                    <a class="navbar-brand"  ng-click="changeLang('sr')">SR</a>
+               </div> 
+         </div>               
+              <div class="container text-center">
+                <div class="navbar-header navbar-right" >                                   
+                  <div >{{"HELLO"|translate}}!<a class="btn btn-link" ng-click="signOut()">{{"SIGNOUT" | translate}}!</a> </div>                  
+                   
+                </div>
+               </div>
+            <div class="container  text-left ">
+
+                <h2>Danulabs {{"BOOKSTORE" | translate}}<h2>
+
+            </div>
+            
+        </div>
+
+<div  class="container ">
+<div class="container text-right">*{{"MANDATORYFIELD" |translate}}</div>
+<form class="form-horizontal" ng-init="initBook()" name="bookForm">
+    <h2>
+     <div ng-show="editMessage">{{"EDIT "|translate}}{{book.title}}</div>
+     <div ng-hide="editMessage">{{"ADDNEWBOOK"|translate}}</div>
+     </h2><br/><br/>
+	 <div class="form-group">
+		
+		<label  class="col-sm-2">ISBN*</label>
+		<div class="col-sm-6">
+            <input  class="form-control" type="text" ng-pattern="onlyNumbers" ng-minlength="13" ng-maxlength="13" ng-model="book.isbn" name="bookIsbn" ng-blur="checkIsbn()" required />
+        </div>
+        <div class="col-sm-4"> 
+            <span class="label label-danger" ng-show="bookForm.bookIsbn.$dirty && bookForm.bookIsbn.$error.required">{{"THISFIELDISREQUIRED" | translate}}</span>
+            <span class="label label-danger" ng-show="bookForm.bookIsbn.$dirty && bookForm.bookIsbn.$invalid || checkedIsbn">{{"ISBNINVALID" | translate}}</span>
+             
+        </div> 
+      </div>   
+	 <div class="form-group">	
+		<label  class="col-sm-2">{{"TITLE" | translate}}*</label>
+		<div class="col-sm-6">
+            <input  class="form-control" type="text" ng-model="book.title" name="bookTitle" required/>
+        </div>
+         <div class="col-sm-4"> 
+            <span class="label label-danger" ng-show="bookForm.bookTitle.$dirty && bookForm.bookTitle.$error.required">{{"THISFIELDISREQUIRED" | translate}}</span>
+       
+        </div> 
+      </div>   
+	 <div class="form-group">	
+		<label  class="col-sm-2">{{"AUTHOR" | translate}}*</label>
+		<div class="col-sm-6">           
+            <input  class="form-control" type="text" ng-model="book.author" name="bookAuthor" required/>
+        </div>
+        <div class="col-sm-4"> 
+            <span class="label label-danger" ng-show="bookForm.bookAuthor.$dirty && bookForm.bookAuthor.$error.required">{{"THISFIELDISREQUIRED" | translate}}</span>
+       
+        </div> 
+      </div> 
+      
+       <div class="form-group">	
+		<label  class="col-sm-2">{{"GENRE" | translate}}*</label>
+		<div class="col-sm-6">           
+            <input  class="form-control" type="text" ng-model="book.genre" name="bookGenre" required/>
+        </div>
+        <div class="col-sm-4"> 
+            <span class="label label-danger" ng-show="bookForm.bookGenre.$dirty && bookForm.bookGenre.$error.required">{{"THISFIELDISREQUIRED" | translate}}</span>
+           
+        </div> 
+      </div>   
+        
+	 <div class="form-group">
+	<div class="col-sm-offset-2 col-sm-10">
+      <button type="submit" class="btn btn-default" ng-click="saveBook()" ng-disabled="!book.isbn || !book.title ||!book.author || !book.genre || checkedIsbn">{{"SAVE" | translate}}</button>
+      <a href="#/books">{{"CANCEL" |translate}}</a>
+    </div>
+	 </div>
+</form>
+</div>
+

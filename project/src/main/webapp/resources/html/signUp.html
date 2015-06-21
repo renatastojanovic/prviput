@@ -1,0 +1,81 @@
+<div class="jumbotron">
+ 
+            <div class="container text-center">
+               <div class="navbar-header navbar-left" >
+                    <a class="navbar-brand" ng-click="changeLang('en')" >EN</a>
+                    <a class="navbar-brand"  ng-click="changeLang('sr')">SR</a>
+               </div>     
+             
+             
+            </div>
+              <div class="container text-center">
+                <div class="navbar-header navbar-right" >
+
+                   <form name="myForm"  ng-init="initUser()" >
+
+                    <input type="text" ng-hide="userLog" id="user" name="username" ng-model="userL.username" placeholder="username"  required />
+
+                    <input type="password" ng-hide="userLog" id="pass" name="password" ng-model="userL.password" placeholder="password" required />
+                    <a class="btn btn-primary" ng-hide="userLog" ng-click="login()" ng-disabled="!userL.username && !userL.password"> Login</a> 
+                   
+                  <div >{{"YOUDONTHAVEANACCOUNT"| translate}}?<a href="#/users/add">{{"SIGNUP" |translate}}!</a> </div>
+                             
+                   </form>
+                </div>
+             </div>
+            <div class="container  text-left">
+
+                <h2>Danulabs {{"BOOKSTORE"|translate}}<h2>
+
+            </div>
+            
+        
+        </div>
+<div class="container text-right">*{{"MANDATORYFIELD" |translate}}</div>
+<div class="container">
+<h3>{{"SIGNUP" |translate}}</h3>
+
+<form class="form-horizontal"  name="userForm">
+	 <div class="form-group">
+		
+		<label  class="col-sm-2">{{"USERNAME" | translate}}*</label>
+		<div class="col-sm-6">
+            <input  class="form-control" type="text" ng-model="user.username" name="userUsername" ng-blur="checkUsername()" required />
+        </div>
+        <div class="col-sm-4"> 
+            <span class="label label-danger" ng-show="userForm.userUsername.$dirty && userForm.userUsername.$error.required">{{"THISFIELDISREQUIRED" | translate}}</span>
+            <span class="label label-danger" ng-show="checkedUsername">{{"THISUSERNAMEISTAKEN" | translate}}</span>
+        </div> 
+      </div>   
+	 <div class="form-group">	
+		<label  class="col-sm-2">{{"PASSWORD" | translate}}*</label>
+		<div class="col-sm-6">
+            <input  class="form-control" type="password" ng-model="user.password" name="userPassword" required/>
+        </div>
+         <div class="col-sm-4"> 
+            <span class="label label-danger" ng-show="userForm.userPassword.$dirty && userForm.userPassword.$error.required">{{"THISFIELDISREQUIRED" | translate}}</span>
+       
+        </div> 
+      </div>   
+	 <div class="form-group">	
+		<label  class="col-sm-2">{{"REPEATPASSWORD" | translate}}*</label>
+		<div class="col-sm-6">           
+            <input  class="form-control" type="password" ng-model="user.repeatedPassword" name="userRepeatedPassword" ng-blur="checkPassword()" required/>
+        </div>
+        <div class="col-sm-4"> 
+            <span class="label label-danger" ng-show="userForm.userRepeatedPassword.$dirty && userForm.userRepeatedPassword.$error.required">{{"THISFIELDISREQUIRED" | translate}}</span>
+            <span class="label label-danger" ng-show="checkedPassword">{{"PASSWORDSDONTMATCH" | translate}}</span>
+        </div> 
+      </div> 
+      
+    
+        
+	 <div class="form-group">
+	<div class="col-sm-offset-2 col-sm-10">
+      <button type="submit" class="btn btn-default" ng-click="saveUser()" ng-disabled="!user.username || !user.password ||!user.repeatedPassword || checkedUsername || checkedPassword">{{"CONFIRM" | translate}}</button>
+       <a href="#/">{{"CANCEL" | translate}}</a>
+    </div>
+    
+	 </div>
+</form>
+</div>

@@ -1,0 +1,77 @@
+<input type="text" ng-model="search" />
+<a class="btn btn-link btn-sm">{{"SEARCHBY" | translate}}
+<select class="form-control form-group" ng-model="searchBy">
+        <option value="isbn">ISBN</option>
+        <option value="title">{{"TITLE" | translate}}</option> 
+        <option value="author">{{"AUTHOR" | translate}}</option>
+        <option value="genre">{{"GENRE" | translate}}</option>        
+ </select>
+ </a>
+ <a class="btn btn-primary" ng-click="getBooks()"><span class="glyphicon glyphicon-search"></span> {{"SEARCH" | translate}}</a>
+ <a class="btn btn-success"
+	ng-click="search=null; getBooks()">{{"CLEAR" | translate}}</a>
+ <div>Filtering input: <input type="text" ng-model="test"></div>
+   
+<table class="table table-bordered " ng-init="getBooks()">
+	<thead>
+		<tr class="success">
+			<th>ISBN</th>
+			<th>{{"TITLE" | translate}}</th>
+			<th>{{"AUTHOR" | translate}}</th>
+			<th>{{"GENRE" | translate}}</th>
+			
+			<th>{{"ACTIONS" | translate}}</th>
+			
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="book in books|filter :test| orderBy : 'title'">
+			<td ng-if="$even">{{ book.isbn }}</td>
+			<td ng-if="$odd" class="success">{{ book.isbn }}</td>
+			<td ng-if="$even" >{{ book.title }}</td>
+			<td ng-if="$odd" class="success">{{ book.title }}</td>
+			<td ng-if="$even">{{ book.author }}</td>
+			<td ng-if="$odd" class="success">{{ book.author }}</td>
+			<td ng-if="$even">{{ book.genre }}</td>
+			<td ng-if="$odd" class="success">{{ book.genre }}</td>
+			
+			<td ng-if="$even">
+			 <a class="btn btn-default "
+				href="#/books/edit/{{book.id}}"><span class="glyphicon glyphicon-pencil"></span>&nbsp;&nbsp;{{"EDIT" | translate}}</a>
+			<a class="btn btn-default "
+				ng-click="deleteM=true" ng-hide="deleteM">{{"DELETE" | translate}}</a>
+				 <button type="submit" class="btn btn-default" ng-show="deleteM" ng-click="deleteBook(book.id)" >{{"CONFIRM" | translate}}</button>
+                  <button type="submit" class="btn btn-default" ng-show="deleteM" ng-click="deleteM=false" >{{"CANCEL" | translate}}</button>
+				
+				</td>
+				<td ng-if="$odd" class="success">
+			 <a class="btn btn-default "
+				href="#/books/edit/{{book.id}}"><span class="glyphicon glyphicon-pencil"></span>&nbsp;&nbsp;{{"EDIT" | translate}}</a>
+			<a class="btn btn-default "
+				ng-click="deleteM=true" ng-hide="deleteM">{{"DELETE" | translate}}</a>
+				 <button type="submit" class="btn btn-default" ng-show="deleteM" ng-click="deleteBook(book.id)" >{{"CONFIRM" | translate}}</button>
+                  <button type="submit" class="btn btn-default" ng-show="deleteM" ng-click="deleteM=false" >{{"CANCEL" | translate}}</button>
+				
+				</td>
+		</tr>
+	</tbody>
+</table>
+
+	
+<div class="col-md-12 text-right ">
+	<ul class="pagination pagination-sm"">
+		<li><a class="btn btn-default btn-sm "
+			ng-click="changePage(page - 1)" ng-disabled="page==0">{{"PREVIUOS" | translate}}</a></li>
+		<li ng-repeat="n in range()"><a
+			class="btn btn-default btn-sm ng-class: {active: n == page};"
+			ng-click="changePage(n)">{{n+1}}</a></li>
+		<li><a class="btn btn-default btn-sm "
+			ng-click="changePage(page+1)" ng-disabled="page + 1 == totalPages">{{"NEXT" | translate}}</a></li>
+	</ul>
+</div>
+
+<div class="col-md-12 text-center">
+	<span class="glyphicon glyphicon-refresh glyphicon-refresh-animate"
+		ng-hide="successMessage || errorMessage"></span> <span
+		class="label label-danger" ng-show="errorMessage">{{"ERRORMESSAGE" | translate}}</span>
+</div>

@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html ng-app="bookstoreApp">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>BOOKSTORE</title>
+        
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="resources/js/jquery-2.1.1.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="resources/js/bootstrap.js"></script>
+        
+        <script src="resources/js/angular.js"></script>
+        <script src="resources/js/angular-route.js"></script>
+         <script src="resources/js/angular-translate.js"></script>
+        
+        <script src="resources/js/app.js"></script>
+        <script src="resources/js/app-directives.js"></script>
+        <script src="resources/js/app-controllers.js"></script>
+        <script src="resources/js/app-services.js"></script>
+
+        <!-- Bootstrap -->
+        <link href="resources/css/bootstrap.css" rel="stylesheet">
+        <link href="resources/css/bootstrap-theme.css" rel="stylesheet">
+        <link href="resources/css/main.css" rel="stylesheet">
+    </head>
+    <body ng-controller="TranslateController">
+       
+        
+            
+     
+        <div id="container"  ng-view>
+
+        </div>
+       <footer class="jumbotron">
+       <div class="container text-left">
+            <div class="navbar-footer navbar-left" >Copyright 2013 by Danulabs
+            </div>
+            </div>
+            <div class="container text-right">
+            
+            <a href="www.danulabs.com">www.danulabs.com</a>
+            </div>
+       </footer> 
+    </body>
+</html>
