@@ -17,6 +17,19 @@ public class User {
 	private String password;
 	@Column(name="deleted", nullable=false) 
 	private boolean deleted;
+	
+	
+	public User() {
+		super();
+	}
+	public User(String userAccountID, String username, String password,
+			boolean deleted) {
+		super();
+		this.userAccountID = userAccountID;
+		this.username = username;
+		this.password = password;
+		this.deleted = deleted;
+	}
 	public String getUserAccountID() {
 		return userAccountID;
 	}

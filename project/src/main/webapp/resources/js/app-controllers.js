@@ -1,18 +1,20 @@
 var bookstoreApp = angular.module('bookstoreApp.controllers', []); 
 
-bookstoreApp.controller('BooksController', function($scope, $http, $location,$routeParams,$interval,bookRestService,userRestService) {
+bookstoreApp.controller('BooksController', function($scope,$rootScope, $http, $location,$routeParams,$interval,bookRestService,userRestService) {
 	$scope.onlyNumbers = /^[0-9]+$/;
 	//$scope.patternDate=/^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})$/;
 	$scope.page=0;
 	
-	
+	if(!$rootScope.userLogMessage){
+		$location.path('/');
+	}
 	$scope.getBooks=function(){
 		
 		var parameters={page:$scope.page};
 		if($scope.search){
 			$scope.page=0;
 			parameters={search: $scope.search,searchBy:$scope.searchBy,page:$scope.page, pageSize:$scope.pageSize };
-		
+			
 		}
 		bookRestService.getBooks(parameters) 			
 		.success(function(data,status,headers) {			
@@ -61,11 +63,10 @@ bookstoreApp.controller('BooksController', function($scope, $http, $location,$ro
 		bookRestService.getBook(id)
 		   .success(function(data){
 			   $scope.book=data;
-			   $scope.book.deleted=true;
-			  			  		   
+			   $scope.book.deleted=true;			  			  		   
 			        bookRestService.saveBook($scope.book)
 					  .success(function(data){
-						  $scope.books.splice(index,1);							
+						  $scope.getBooks();							
 					  });
 		
 		   });
@@ -95,9 +96,11 @@ bookstoreApp.controller('BooksController', function($scope, $http, $location,$ro
 			$scope.errorMessage=true;
 		});
     };
-
+});
+    bookstoreApp.controller('LoginController', function($scope,$rootScope, $http, $location,$routeParams,$interval,userRestService) {
 	$scope.checkedUsername=false;
 	$scope.checkedPassword=false;
+	$rootScope.userLogMessage=false;
 	
 	$scope.checkUsername=function(){
 		 parameters={username:$scope.user.username};
@@ -130,9 +133,10 @@ bookstoreApp.controller('BooksController', function($scope, $http, $location,$ro
 	$scope.saveUser=function(){
 	    userRestService.saveUser(  $scope.user)
 		  .success(function(data){
-			    $scope.userLog=true;
-			    $rootScope.currentUser = $scope.user;
-			    $location.path('books/');	      
+			    $rootScope.userLogMessage=true;
+			    $rootScope.userL = $scope.user;
+			    $location.path('books/');
+			   
 		 });	
 	};
 
@@ -143,15 +147,18 @@ bookstoreApp.controller('BooksController', function($scope, $http, $location,$ro
 		$scope.userL={};	
 	};
 	$scope.login=function(){
-		  if($scope.userL.username && $scope.userL.password){
+		  
 			var parameters={password:$scope.userL.password, username:$scope.userL.username};		
 
 			userRestService.getUsers(parameters)
 			    .success(function(data){
 				    $scope.user=data;
 				    if($scope.user.length>0){
-				    	 
-				    	 $location.path('/books');				    	 				    	 
+				    	 $rootScope.userLogMessage=true;
+						  $rootScope.userL = $scope.user;
+						  $location.path('books/');
+						  var userL=$rootScope.userL;
+						  localStorage.setItem('userL',userL);
 				    }else{
 				    	$scope.userL={};
 				    }
@@ -159,12 +166,15 @@ bookstoreApp.controller('BooksController', function($scope, $http, $location,$ro
 			     .error(function(){
 			    	 $scope.errorMessage='Ooops, something went wrong!';
 			     });
-		    };
+		  
 	};
+	
 	$scope.signOut=function(){
-		 
+		
 		 $location.path('/');
-		 
+		 $rootScope.userLogMessage=false;
+		 $rootScope.userL=null;
+		
 	};
 });
 

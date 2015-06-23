@@ -1,36 +1,4 @@
-<div class="jumbotron">
- 
-            <div class="container text-center">
-               <div class="navbar-header navbar-left" >
-                    <a class="navbar-brand" ng-click="changeLang('en')" >EN</a>
-                    <a class="navbar-brand"  ng-click="changeLang('sr')">SR</a>
-               </div>     
-             
-             
-            </div>
-              <div class="container text-center">
-                <div class="navbar-header navbar-right" >
 
-                   <form name="myForm"  ng-init="initUser()" >
-
-                    <input type="text" ng-hide="userLog" id="user" name="username" ng-model="userL.username" placeholder="username"  required />
-
-                    <input type="password" ng-hide="userLog" id="pass" name="password" ng-model="userL.password" placeholder="password" required />
-                    <a class="btn btn-primary" ng-hide="userLog" ng-click="login()" ng-disabled="!userL.username && !userL.password"> Login</a> 
-                   
-                  <div >{{"YOUDONTHAVEANACCOUNT"| translate}}?<a href="#/users/add">{{"SIGNUP" |translate}}!</a> </div>
-                             
-                   </form>
-                </div>
-             </div>
-            <div class="container  text-left">
-
-                <h2>Danulabs {{"BOOKSTORE"|translate}}<h2>
-
-            </div>
-            
-        
-        </div>
 <div class="container text-right">*{{"MANDATORYFIELD" |translate}}</div>
 <div class="container">
 <h3>{{"SIGNUP" |translate}}</h3>

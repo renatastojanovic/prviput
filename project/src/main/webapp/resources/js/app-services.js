@@ -31,8 +31,8 @@ bookstoreApp.service('userRestService',function($http){
 		return $http.get(this.apiUsersUrl,{params : parameters}); 	
 	};
 	
-	this.saveUser=function(user){		
-		return $http.post(this.apiUsersUrl, user);
+	this.saveUser=function(user,parameters){		
+		return $http.post(this.apiUsersUrl, user,{params : parameters});
 	};
 	
 	

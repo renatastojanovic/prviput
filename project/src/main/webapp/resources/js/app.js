@@ -26,12 +26,13 @@ bookstoreApp.config(['$routeProvider', function($routeProvider) {
 	    
 	    .when('/users/add',{
 	    	templateUrl:'resources/html/signUp.html',
-	    	controller: 'BooksController'
+	    	controller: 'LoginController'
 	    })
 	    
 	    .otherwise({
             redirectTo: '/'
         });
+	
 }]);
 
 bookstoreApp.config(['$translateProvider', function($translateProvider){//za prevodjenje na druge jezike

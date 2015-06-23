@@ -8,7 +8,7 @@ import jwts.bookstore.service.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-@Service
+
 public class JpaUserService implements UserService {
     @Autowired
 	private UserRepository userRepository;
@@ -24,11 +24,6 @@ public class JpaUserService implements UserService {
 		return userRepository.findByUsernameAndDeletedFalse(username);
 	}
 
-	@Override
-	public List<User> findByUsernameAndPassword(String username, String password) {
-		
-		return userRepository.findByUsernameAndPassword(username, password);
-	}
 
 	@Override
 	public List<User> findByUsernameAndPasswordAndDeletedFalse(String username,

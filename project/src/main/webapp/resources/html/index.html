@@ -24,12 +24,40 @@
         <link href="resources/css/bootstrap-theme.css" rel="stylesheet">
         <link href="resources/css/main.css" rel="stylesheet">
     </head>
-    <body ng-controller="TranslateController">
-       
-        
-            
-     
-        <div id="container"  ng-view>
+    <body >
+      
+   <div class="jumbotron">
+ 
+            <div class="container text-center">
+               <div class="navbar-header navbar-left" ng-controller="TranslateController" >
+                    <a class="navbar-brand" ng-click="changeLang('en')" >EN</a>
+                    <a class="navbar-brand"  ng-click="changeLang('sr')">SR</a>
+               </div>     
+             
+             
+            </div>
+              <div class="container text-center" ng-controller="LoginController">
+                <div class="navbar-header navbar-right" >
+
+                   <form name="myForm"  ng-init="initUser()" >
+
+                    <input type="text" ng-hide="userLogMessage" id="user" name="username" ng-model="userL.username" placeholder="username"  required />
+
+                    <input type="password" ng-hide="userLogMessage" id="pass" name="password" ng-model="userL.password" placeholder="password" required />
+                    <a class="btn btn-primary" ng-hide="userLogMessage" ng-click="login()" ng-disabled="!userL.username && !userL.password"> Login</a> 
+                   
+                  <div ng-hide="userLogMessage">{{"YOUDONTHAVEANACCOUNT"| translate}}?<a href="#/users/add">{{"SIGNUP" |translate}}!</a> </div>
+                   <div ng-show="userLogMessage">{{"HELLO"|translate}}, {{userL.username}}!<a class="btn btn-link" ng-click="signOut()">{{"SIGNOUT" | translate}}!</a> </div>           
+                   </form>
+                </div>
+             </div>      
+      <div class="container  text-left">
+
+                <h2>Danulabs {{"BOOKSTORE"|translate}}<h2>
+
+       </div>       
+    </div> 
+        <div id="container" class="container" ng-view>
 
         </div>
        <footer class="jumbotron">

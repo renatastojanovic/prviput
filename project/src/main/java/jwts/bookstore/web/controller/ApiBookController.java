@@ -29,7 +29,8 @@ public class ApiBookController {
     
     @RequestMapping(method=RequestMethod.GET)
 	public ResponseEntity<List<BookDTO>> getBooks(@RequestParam(value="search",required=false) String search,@RequestParam(value="searchBy",required=false) String searchBy,
-				@RequestParam(value="page") int page){
+			@RequestParam(value="page") int page){
+    
 		List<Book> books =null;
 		Page<Book> booksPage=null;
 		int size =6;

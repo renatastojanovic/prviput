@@ -32,10 +32,11 @@ public class ApiUserController {
 		if(password!=null && username!=null ){
 			
 			users = userService.findByUsernameAndPasswordAndDeletedFalse(username, password);
-				
+			
+			
 		}else if( username!=null){
 			users=userService.findByUsernameAndDeletedFalse(username);
-			
+		
 		}else{
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
@@ -48,6 +49,7 @@ public class ApiUserController {
 	}
 	@RequestMapping(method=RequestMethod.POST, consumes="application/json")
 	public ResponseEntity<UserDTO> saveUser(@RequestBody UserDTO userDTO){
+		
 		User user = new User();
 		user.setUserAccountID(UUID.randomUUID().toString());
 		user.setUsername(userDTO.getUsername());
@@ -55,6 +57,7 @@ public class ApiUserController {
 		user.setDeleted(userDTO.isDeleted());
 		
 		user = userService.save(user);
+		
 		return new ResponseEntity<>(new UserDTO(user), HttpStatus.CREATED);
 		
 	}

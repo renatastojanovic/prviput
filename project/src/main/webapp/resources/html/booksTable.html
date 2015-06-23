@@ -40,7 +40,7 @@
 				href="#/books/edit/{{book.id}}"><span class="glyphicon glyphicon-pencil"></span>&nbsp;&nbsp;{{"EDIT" | translate}}</a>
 			<a class="btn btn-default "
 				ng-click="deleteM=true" ng-hide="deleteM">{{"DELETE" | translate}}</a>
-				 <button type="submit" class="btn btn-default" ng-show="deleteM" ng-click="deleteBook(book.id)" >{{"CONFIRM" | translate}}</button>
+				 <button type="submit" class="btn btn-default" ng-show="deleteM" ng-click="deleteBook(book.id,$index);deleteM=false" >{{"CONFIRM" | translate}}</button>
                   <button type="submit" class="btn btn-default" ng-show="deleteM" ng-click="deleteM=false" >{{"CANCEL" | translate}}</button>
 				
 				</td>
