@@ -33,8 +33,7 @@
 			<td ng-if="$even">{{ book.author }}</td>
 			<td ng-if="$odd" class="success">{{ book.author }}</td>
 			<td ng-if="$even">{{ book.genre }}</td>
-			<td ng-if="$odd" class="success">{{ book.genre }}</td>
-			
+			<td ng-if="$odd" class="success">{{ book.genre }}</td>		
 			<td ng-if="$even">
 			 <a class="btn btn-default "				
 			href="#/books/edit/{{book.id}}"><span class="glyphicon glyphicon-pencil"></span>&nbsp;&nbsp;{{"EDIT" | translate}}</a>
