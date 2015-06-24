@@ -2,7 +2,7 @@ var bookstoreApp = angular.module('bookstoreApp.controllers', []);
 
 bookstoreApp.controller('BooksController', function($scope,$rootScope, $http, $location,$routeParams,$interval,bookRestService,userRestService) {
 	$scope.onlyNumbers = /^[0-9]+$/;
-	//$scope.patternDate=/^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})$/;
+
 	$scope.page=0;
 	
 	if(!$rootScope.userLogMessage){
@@ -59,7 +59,10 @@ bookstoreApp.controller('BooksController', function($scope,$rootScope, $http, $l
 	};
 	
 	
-	$scope.deleteBook=function(id, index){
+	$scope.deleteBook=function(id){
+		 var r = confirm("Confirm deleting!");
+		    if (r == true) {
+		   
 		bookRestService.getBook(id)
 		   .success(function(data){
 			   $scope.book=data;
@@ -70,7 +73,8 @@ bookstoreApp.controller('BooksController', function($scope,$rootScope, $http, $l
 					  });
 		
 		   });
-		
+		    
+		    }
 	};
 	
 	
@@ -131,13 +135,16 @@ bookstoreApp.controller('BooksController', function($scope,$rootScope, $http, $l
 	};
 	
 	$scope.saveUser=function(){
+		
+		   
 	    userRestService.saveUser(  $scope.user)
 		  .success(function(data){
 			    $rootScope.userLogMessage=true;
 			    $rootScope.userL = $scope.user;
 			    $location.path('books/');
-			   
-		 });	
+		    
+		 });
+		    
 	};
 
 	
