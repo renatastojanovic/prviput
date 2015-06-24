@@ -56,8 +56,7 @@ bookstoreApp.controller('BooksController', function($scope,$rootScope, $http, $l
 			 $location.path('books/');	      
 		 });	
 	};
-	
-	
+		
 	$scope.deleteBook=function(id){
 		 var r = confirm("Confirm deleting!");
 		    if (r == true) {
