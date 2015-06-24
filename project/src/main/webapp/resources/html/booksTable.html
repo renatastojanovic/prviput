@@ -36,8 +36,8 @@
 			<td ng-if="$odd" class="success">{{ book.genre }}</td>
 			
 			<td ng-if="$even">
-			 <a class="btn btn-default "
-				href="#/books/edit/{{book.id}}"><span class="glyphicon glyphicon-pencil"></span>&nbsp;&nbsp;{{"EDIT" | translate}}</a>
+			 <a class="btn btn-default "				
+			href="#/books/edit/{{book.id}}"><span class="glyphicon glyphicon-pencil"></span>&nbsp;&nbsp;{{"EDIT" | translate}}</a>
 			<a class="btn btn-default "
 				ng-click="deleteM=true" ng-hide="deleteM">{{"DELETE" | translate}}</a>
 				 <button type="submit" class="btn btn-success" ng-show="deleteM" ng-click="deleteBook(book.id)" >{{"CONFIRM" | translate}}</button>

@@ -1,5 +1,6 @@
 var bookstoreApp = angular.module('bookstoreApp.controllers', []); 
 
+
 bookstoreApp.controller('BooksController', function($scope,$rootScope, $http, $location,$routeParams,$interval,bookRestService,userRestService) {
 	$scope.onlyNumbers = /^[0-9]+$/;
 	$scope.page=0;
