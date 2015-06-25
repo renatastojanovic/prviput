@@ -3,12 +3,12 @@
 <div class="container">
 <h3>{{"SIGNUP" |translate}}</h3>
 
-<form class="form-horizontal"  name="userForm">
+<form class="form-horizontal" ng-init="initUser()" name="userForm">
 	 <div class="form-group">
 		
 		<label  class="col-sm-2">{{"USERNAME" | translate}}*</label>
 		<div class="col-sm-6">
-            <input  class="form-control" type="text" ng-model="user.username" name="userUsername" ng-blur="checkUsername()" required />
+            <input  class="form-control" type="text" ng-model="user.username" name="userUsername" ng-blur="checkUsername()" ng-focus="checkedUsername=false" required />
         </div>
         <div class="col-sm-4"> 
             <span class="label label-danger" ng-show="userForm.userUsername.$dirty && userForm.userUsername.$error.required">{{"THISFIELDISREQUIRED" | translate}}</span>

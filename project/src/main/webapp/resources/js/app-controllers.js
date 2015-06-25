@@ -103,6 +103,7 @@ bookstoreApp.controller('BooksController', function($scope,$rootScope, $http, $l
 	$scope.checkedUsername=false;
 	$scope.checkedPassword=false;
 	$rootScope.userLogMessage=false;
+	$rootScope.userL=null;
 	
 	$scope.checkUsername=function(){
 		 parameters={username:$scope.user.username};
@@ -133,12 +134,12 @@ bookstoreApp.controller('BooksController', function($scope,$rootScope, $http, $l
 	};
 	
 	$scope.saveUser=function(){
-		
-		   
+			   
 	    userRestService.saveUser(  $scope.user)
 		  .success(function(data){
 			    $rootScope.userLogMessage=true;
-			    $rootScope.userL = $scope.user;
+			    var user=$scope.user;
+			    $rootScope.userL = user;
 			    $location.path('books/');
 		    
 		 });
@@ -146,26 +147,26 @@ bookstoreApp.controller('BooksController', function($scope,$rootScope, $http, $l
 	};
 
 	
-	$scope.messageUsername=false;
+	//$scope.messageUsername=false;
 	
-	$scope.initUser=function(){	
-		$scope.userL={};	
+	$scope.initUserLog=function(){	
+		$scope.userLog={};	
 	};
 	$scope.login=function(){
 		  
-			var parameters={password:$scope.userL.password, username:$scope.userL.username};		
+			var parameters={password:$scope.userLog.password, username:$scope.userLog.username};		
 
 			userRestService.getUsers(parameters)
 			    .success(function(data){
-				    $scope.user=data;
-				    if($scope.user.length>0){
+				    $scope.userRec=data;
+				    if($scope.userRec.length>0){
 				    	 $rootScope.userLogMessage=true;
-						  $rootScope.userL = $scope.user;
+				    	 var userLog=$scope.userLog;
+						  $rootScope.userL =userLog; 
 						  $location.path('books/');
-						  var userL=$rootScope.userL;
-						  localStorage.setItem('userL',userL);
+						  
 				    }else{
-				    	$scope.userL={};
+				    	$scope.userLog={};
 				    }
 			    })
 			     .error(function(){

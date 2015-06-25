@@ -39,12 +39,12 @@
               <div class="container text-center" ng-controller="LoginController">
                 <div class="navbar-header navbar-right" >
 
-                   <form name="myForm"  ng-init="initUser()" >
+                   <form name="myForm"  ng-init="initUserLog()" >
 
-                    <input type="text" ng-hide="userLogMessage" id="user" name="username" ng-model="userL.username" placeholder="username"  required />
+                    <input type="text" ng-hide="userLogMessage" id="user" name="username" ng-model="userLog.username" placeholder="username"  required />
 
-                    <input type="password" ng-hide="userLogMessage" id="pass" name="password" ng-model="userL.password" placeholder="password" required />
-                    <a class="btn btn-primary" ng-hide="userLogMessage" ng-click="login()" ng-disabled="!userL.username && !userL.password"> Login</a> 
+                    <input type="password" ng-hide="userLogMessage" id="pass" name="password" ng-model="userLog.password" placeholder="password" required />
+                    <a class="btn btn-primary" ng-hide="userLogMessage" ng-click="login()" ng-disabled="!userLog.username && !userLog.password"> Login</a> 
                    
                   <div ng-hide="userLogMessage">{{"YOUDONTHAVEANACCOUNT"| translate}}?<a href="#/users/add">{{"SIGNUP" |translate}}!</a> </div>
                    <div ng-show="userLogMessage">{{"HELLO"|translate}}, {{userL.username}}!<a class="btn btn-link" ng-click="signOut()">{{"SIGNOUT" | translate}}!</a> </div>           
