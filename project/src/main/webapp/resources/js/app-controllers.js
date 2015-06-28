@@ -147,7 +147,7 @@ bookstoreApp.controller('BooksController', function($scope,$rootScope, $http, $l
 	};
 
 	
-	//$scope.messageUsername=false;
+	$scope.messageUsername=false;
 	
 	$scope.initUserLog=function(){	
 		$scope.userLog={};	

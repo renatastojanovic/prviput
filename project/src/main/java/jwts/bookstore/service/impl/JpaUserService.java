@@ -7,7 +7,6 @@ import jwts.bookstore.repository.UserRepository;
 import jwts.bookstore.service.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 public class JpaUserService implements UserService {
     @Autowired

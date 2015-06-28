@@ -43,7 +43,7 @@ public class UserServiceDB implements UserService {
 		} catch (SQLException e) {
 		    e.printStackTrace();
 		}
-		return null;
+		return retVal;
 	}
 
 	@Override
