@@ -8,21 +8,22 @@
 		
 		<label  class="col-sm-2">{{"USERNAME" | translate}}*</label>
 		<div class="col-sm-6">
-            <input  class="form-control" type="text" ng-model="user.username" name="userUsername" ng-blur="checkUsername()" ng-focus="checkedUsername=false" required />
+            <input  class="form-control" type="text" ng-model="user.username" ng-pattern="usernamePattern" name="userUsername" ng-blur="checkUsername()" ng-focus="checkedUsername=false"  required />
         </div>
         <div class="col-sm-4"> 
             <span class="label label-danger" ng-show="userForm.userUsername.$dirty && userForm.userUsername.$error.required">{{"THISFIELDISREQUIRED" | translate}}</span>
             <span class="label label-danger" ng-show="checkedUsername">{{"THISUSERNAMEISTAKEN" | translate}}</span>
+            
         </div> 
       </div>   
 	 <div class="form-group">	
 		<label  class="col-sm-2">{{"PASSWORD" | translate}}*</label>
 		<div class="col-sm-6">
-            <input  class="form-control" type="password" ng-model="user.password" name="userPassword" required/>
+            <input  class="form-control" type="password" ng-model="user.password" name="userPassword"  ng-minlength="6" required/>
         </div>
          <div class="col-sm-4"> 
             <span class="label label-danger" ng-show="userForm.userPassword.$dirty && userForm.userPassword.$error.required">{{"THISFIELDISREQUIRED" | translate}}</span>
-       
+            <span class="label label-danger" ng-show="userForm.userPassword.$dirty && userForm.userPassword.$error.minlength">{{"WEAKPASSWORD" | translate}}</span>
         </div> 
       </div>   
 	 <div class="form-group">	

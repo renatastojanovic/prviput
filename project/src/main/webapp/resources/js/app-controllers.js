@@ -12,8 +12,7 @@ bookstoreApp.controller('BooksController', function($scope,$rootScope, $http, $l
 		var parameters={page:$scope.page};
 		if($scope.search){
 			$scope.page=0;
-			parameters={search: $scope.search,searchBy:$scope.searchBy,page:$scope.page, pageSize:$scope.pageSize };
-			
+			parameters={search: $scope.search,searchBy:$scope.searchBy,page:$scope.page, pageSize:$scope.pageSize };			
 		}
 		bookRestService.getBooks(parameters) 			
 		.success(function(data,status,headers) {			
@@ -103,7 +102,8 @@ bookstoreApp.controller('BooksController', function($scope,$rootScope, $http, $l
 	$scope.checkedUsername=false;
 	$scope.checkedPassword=false;
 	$rootScope.userLogMessage=false;
-	$rootScope.userL=null;
+	$scope.messageUsername=false;
+	$rootScope.userL={};
 	
 	$scope.checkUsername=function(){
 		 parameters={username:$scope.user.username};
@@ -128,7 +128,7 @@ bookstoreApp.controller('BooksController', function($scope,$rootScope, $http, $l
 			$scope.checkedPassword=false;
 		}
 	};
-
+		
 	$scope.initUser=function(){
 		$scope.user={};		
 	};
@@ -147,11 +147,12 @@ bookstoreApp.controller('BooksController', function($scope,$rootScope, $http, $l
 	};
 
 	
-	$scope.messageUsername=false;
+	
 	
 	$scope.initUserLog=function(){	
 		$scope.userLog={};	
 	};
+	
 	$scope.login=function(){
 		  
 			var parameters={password:$scope.userLog.password, username:$scope.userLog.username};		
@@ -179,8 +180,8 @@ bookstoreApp.controller('BooksController', function($scope,$rootScope, $http, $l
 		
 		 $location.path('/');
 		 $rootScope.userLogMessage=false;
-		 $rootScope.userL=null;
-		
+		 $rootScope.userL={};
+		 $scope.userLog={};
 	};
 });
 

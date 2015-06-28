@@ -9,7 +9,7 @@ bookstoreApp.config(['$routeProvider', function($routeProvider) {
 	$routeProvider
 		.when('/', {
 			templateUrl : 'resources/html/home.html',
-			controller : 'BooksController'
+			
 	    })
 	    .when('/books', {
 	        templateUrl : 'resources/html/books.html',
@@ -65,17 +65,14 @@ bookstoreApp.config(['$translateProvider', function($translateProvider){//za pre
 		HOMEHEAD:"Welcome to Danulabs bookstore!",
 		HOMEBODY:"Here you can browse our book database, add new books, edit or delete the old ones. Basically, you can do anything!",
 		HOMEFOOTER:"To browse the contents, please sign in, or sign up for an account if you don't have one.",
-		CLEAR:"Clear",
-		
-		SEARCHBY:"Search by",
-		
-		SEARCH:"Search",
-		
-		
-		SAVE:"Save",
-		
+		CLEAR:"Clear",		
+		SEARCHBY:"Search by",		
+		SEARCH:"Search",		
+		SAVE:"Save",		
 	    CONFIRM:"Confirm",
 	    REVERT:"Revert",
+	    WEAKPASSWORD:"Minimum password length is 6 characters.",
+	    FILTERINGINPUT:"Filtering input "
 	    
 	    
 		    
@@ -114,10 +111,11 @@ bookstoreApp.config(['$translateProvider', function($translateProvider){//za pre
 	    CLEAR:"Isprazni pretrage",
 	    SEARCHBY:"Pretrazi po",
 	    SEARCH:"Pretrazi",
-
 	    SAVE:"Sacuvaj",
 	   	CONFIRM:"Potvrdi",
 	    REVERT:"Opozovi",
+	    WEAKPASSWORD:"Minimalna duzina lozinke je 6 karaktera.",
+	    FILTERINGINPUT:"Filtriranje ulaza "
 	   
 	    
 	});
