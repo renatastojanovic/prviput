@@ -3,6 +3,10 @@ var bookstoreApp = angular.module('bookstoreApp.controllers', []);
 bookstoreApp.controller('BooksController', function($scope,$rootScope, $http, $location,$routeParams,$interval,bookRestService,userRestService) {
 	$scope.onlyNumbers = /^[0-9]+$/;
 	$scope.page=0;
+	$scope.name="Renata";
+	$(document).ready(function () {
+	    $('[data-toggle="tooltip"]').tooltip();
+	});
 	
 	if(!$rootScope.userLogMessage){
 		$location.path('/');
@@ -201,6 +205,54 @@ bookstoreApp.controller('BooksController', function($scope,$rootScope, $http, $l
 		 $scope.userLog={};
 		localStorage.removeItem('userLog');
 	};
+	
+	/*
+	$(document).ready(function() {
+	    $('#userForm').formValidation({
+	        framework: 'bootstrap',
+	       
+	        err: {
+	            // You can set it to popover
+	            // The message then will be shown in Bootstrap popover
+	            container: 'tooltip'
+	        },
+	        fields: {
+	        	userUsername: {
+	                row: '.col-xs-4',
+	                validators: {
+	                    notEmpty: {
+	                        message: 'The username is required'
+	                    },
+				        regexp: {
+			                regexp: /^[a-zA-Z0-9_\.]+$/,
+			                message: 'The username can only consist of alphabetical, number, dot and underscore'
+			            }
+	                }
+	            },
+	            userPassword: {
+	                row: '.col-xs-4',
+	                validators: {
+	                    notEmpty: {
+	                        message: 'The password is required'
+	                    }
+	                }
+	            },
+	           
+	            userRepeatedPassword: {
+	                validators: {
+	                    notEmpty: {
+	                        message: 'The repeated password is required'
+	                    },
+	                    identical: {
+	                        field: 'userPassword',
+	                        message: 'The password must be same'
+	                    }
+	                }
+	            }
+	            
+	        }
+	    });
+	});*/
 });
 
 bookstoreApp.controller('TranslateController',function($scope,$translate){

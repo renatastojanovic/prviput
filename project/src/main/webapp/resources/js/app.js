@@ -1,4 +1,4 @@
-var bookstoreApp = angular.module('bookstoreApp', ['ngRoute','pascalprecht.translate','bookstoreApp.directives','bookstoreApp.controllers','bookstoreApp.services']); // wafepaApp je AngularJS aplikacija (u index.html <html ng-app="wafepaApp">)
+var bookstoreApp = angular.module('bookstoreApp', ['ngRoute','ui.bootstrap','pascalprecht.translate','bookstoreApp.directives','bookstoreApp.controllers','bookstoreApp.services']); // wafepaApp je AngularJS aplikacija (u index.html <html ng-app="wafepaApp">)
 
 
 

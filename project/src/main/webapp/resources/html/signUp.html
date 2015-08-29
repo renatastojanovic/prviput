@@ -3,7 +3,7 @@
 <div class="container">
 <h3>{{"SIGNUP" |translate}}</h3></br></br>
 
-<form class="form-horizontal" ng-init="initUser()" name="userForm">
+<form class="form-horizontal" ng-init="initUser()" name="userForm" id="userForm">
 	 <div class="form-group">
 		
 		<label  class="col-sm-2">{{"USERNAME" | translate}}*</label>
@@ -19,7 +19,7 @@
 	 <div class="form-group">	
 		<label  class="col-sm-2">{{"PASSWORD" | translate}}*</label>
 		<div class="col-sm-6">
-            <input  class="form-control" type="password" ng-model="user.password" name="userPassword"  ng-minlength="6" required/>
+            <input class="form-control" type="password" ng-model="user.password" name="userPassword"  ng-minlength="6" required/>
         </div>
          <div class="col-sm-4"> 
             <span class="label label-danger" ng-show="userForm.userPassword.$dirty && userForm.userPassword.$error.required">{{"THISFIELDISREQUIRED" | translate}}</span>
