@@ -21,11 +21,14 @@
         
             <span class="label label-danger" ng-show="bookForm.bookIsbn.$dirty && bookForm.bookIsbn.$invalid || checkedIsbn">{{"ISBNINVALID" | translate}}</span>
              
-        </div>  -->
+        </div> 
+        
+         bower install angular-bootstrap -->
+         
       </div>   
 	 <div class="form-group" ng-class="{'has-error' : bookForm.bookTitle.$invalid}">	
 		<label  class="col-sm-2">{{"TITLE" | translate}}*</label>
-		<div class="col-sm-6">
+		<div class="col-sm-6" data-toggle="tooltip" title="tooltip" data-container="body" >
             <input  class="form-control" type="text" ng-model="book.title" name="bookTitle" required/>
         </div>
          <div class="col-sm-4"> 
